@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Motivational msg App by chaitali</title>
+        <style>
+            h1{height: 70px;
+            width: 500px;
+            color: white;
+            background-color:black;
+            border-radius: 30px;
+            }
+            * {font-size:40px; font-family:Arial, Helvetica, sans-serif;}
+            body{background-color: rgb(92, 193, 188);border: 30px;}
+            h2{width: 50%; border: solid;border-radius: 30px;}
+            form {height: 130px;
+            width: 400px;
+            background-color: rgb(5, 122, 92);
+            border: 2px;
+            border-radius: 20px;
+            }
+
+        </style>
+        </head>
+
+    <body>
+        <center>
+            <h1>Motivational Msg App </h1>
+            
+            <form onsubmit="gm()">
+                <br>
+                <input type="submit"value = "Get Messages"/>
+                <br>
+            </form>
+            
+            <h2 id ="msg"/>    
+            <h2 id ="aut"/>    
+
+            <script>
+                function gm()
+                {
+                    event.preventDefault();
+                    let msg = document.getElementById("msg");
+                    let aut = document.getElementById("aut");
+                    let url = "https://quotes-api-self.vercel.app/quote";
+				fetch(url)
+				.then(res => res.json())
+				.then(data => {
+					msg.innerHTML = data.quote;
+					aut.innerHTML = data.author;
+				})
+				.catch(err => alert("issue " + err));
+                }
+                                
+                                 
+            </script>
+        </center>
+    </body>
+</html>
